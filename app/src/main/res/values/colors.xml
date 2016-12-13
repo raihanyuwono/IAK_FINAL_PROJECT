@@ -2,5 +2,16 @@
 <resources>
 	<color name="colorPrimary">#212121</color>
 	<color name="colorPrimaryDark">#000000</color>
-	<color name="colorAccent">#FF4081</color>
+	<color name="colorAccent">#e74882ce</color>
+
+	<color name="body_text_white">#FFF</color>
+	<color name="background">#e8000000</color>
+
+	<color name="body_text_1">#de000000</color>
+	<color name="body_text_2">#8a000000</color>
+	<color name="body_text_3">#60000000</color>
+	<color name="body_text_disabled">#44000000</color>
+
+	<color name="list_dropdown_divider_color">#92a3a3a3</color>
+	<color name="black">#000</color>
 </resources>

@@ -17,9 +17,15 @@ import java.util.List;
 public class AdapterDiscoverMovie extends RecyclerView.Adapter<HolderDiscoverMovie> {
 
 	private List<ResponseDiscover.ResultsBean> data;
+	private OnItemClickListener clickListener;
 
-	public AdapterDiscoverMovie(List<ResponseDiscover.ResultsBean> data) {
+	public AdapterDiscoverMovie(List<ResponseDiscover.ResultsBean> data, OnItemClickListener clickListener) {
 		this.data = data;
+		this.clickListener = clickListener;
+	}
+
+	public interface OnItemClickListener{
+		void onClick(ResponseDiscover.ResultsBean resultsBean);
 	}
 
 	@Override
@@ -30,8 +36,14 @@ public class AdapterDiscoverMovie extends RecyclerView.Adapter<HolderDiscoverMov
 
 	@Override
 	public void onBindViewHolder(HolderDiscoverMovie holder, int position) {
-		ResponseDiscover.ResultsBean current = data.get(position);
+		final ResponseDiscover.ResultsBean current = data.get(position);
 		holder.bind(current.getTitle(), current.getPoster_path());
+		holder.itemView.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				clickListener.onClick(current);
+			}
+		});
 	}
 
 	@Override

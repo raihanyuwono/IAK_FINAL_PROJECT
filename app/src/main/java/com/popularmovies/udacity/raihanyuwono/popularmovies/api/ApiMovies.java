@@ -25,7 +25,25 @@ public class ApiMovies {
 
 	public static void discover(final Result result){
 		Request request = new Request.Builder()
-				.url(Endpoint.DISCOVER)
+				.url(Endpoint.MOVIE_PAGE())
+				.get()
+				.build();
+		client.newCall(request).enqueue(new Callback() {
+			@Override
+			public void onFailure(Call call, IOException e) {
+				result.onError(e);
+			}
+
+			@Override
+			public void onResponse(Call call, Response response) throws IOException {
+				result.onSuccess(response.body().string());
+			}
+		});
+	}
+
+	public static void videos(String id, final Result result){
+		Request request = new Request.Builder()
+				.url(Endpoint.VIDEOS(id))
 				.get()
 				.build();
 		client.newCall(request).enqueue(new Callback() {
